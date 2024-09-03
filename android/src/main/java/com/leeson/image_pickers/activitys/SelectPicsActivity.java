@@ -13,7 +13,6 @@ import com.leeson.image_pickers.R;
 import com.leeson.image_pickers.utils.CommonUtils;
 import com.leeson.image_pickers.utils.GlideEngine;
 import com.leeson.image_pickers.utils.ImageCompressEngine;
-import com.leeson.image_pickers.utils.ImageCropEngine;
 import com.leeson.image_pickers.utils.MeSandboxFileEngine;
 import com.leeson.image_pickers.utils.PictureStyleUtil;
 import com.luck.picture.lib.basic.PictureSelector;
@@ -25,10 +24,6 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.interfaces.OnResultCallbackListener;
 import com.luck.picture.lib.language.LanguageConfig;
 import com.luck.picture.lib.style.PictureSelectorStyle;
-import com.luck.picture.lib.style.SelectMainStyle;
-import com.luck.picture.lib.style.TitleBarStyle;
-import com.luck.picture.lib.utils.StyleUtils;
-import com.yalantis.ucrop.UCrop;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -76,7 +71,7 @@ public class SelectPicsActivity extends BaseActivity {
         startSel();
     }
 
-    private UCrop.Options buildOptions(PictureSelectorStyle selectorStyle) {
+    /*private UCrop.Options buildOptions(PictureSelectorStyle selectorStyle) {
         UCrop.Options options = new UCrop.Options();
         if (selectorStyle != null && selectorStyle.getSelectMainStyle().getStatusBarColor() != 0) {
             SelectMainStyle mainStyle = selectorStyle.getSelectMainStyle();
@@ -94,7 +89,7 @@ public class SelectPicsActivity extends BaseActivity {
             }
         }
         return options;
-    }
+    }*/
 
     private int getLang(String language){
         if ("chinese".equals(language)){
@@ -158,8 +153,8 @@ public class SelectPicsActivity extends BaseActivity {
                     .setRecordVideoMinSecond(videoRecordMinSecond.intValue())
                     .setLanguage(getLang(language))
                     .setOutputCameraDir(new AppPath(this).getAppVideoDirPath())
-                    .setCropEngine((enableCrop) ?
-                            new ImageCropEngine(this, buildOptions(selectorStyle), width.intValue(), height.intValue()) : null)
+//                    .setCropEngine((enableCrop) ?
+//                            new ImageCropEngine(this, buildOptions(selectorStyle), width.intValue(), height.intValue()) : null)
                     .setCompressEngine(new ImageCompressEngine(compressSize.intValue()))
                     ./*setCameraInterceptListener(new OnCameraInterceptListener() {
                 @Override
@@ -233,8 +228,8 @@ public class SelectPicsActivity extends BaseActivity {
                     .setRecordVideoMinSecond(videoRecordMinSecond.intValue())
                     .setLanguage(getLang(language))
                     .setOutputCameraDir(new AppPath(this).getAppVideoDirPath())
-                    .setCropEngine(enableCrop ?
-                            new ImageCropEngine(this, buildOptions(selectorStyle), width.intValue(), height.intValue()) : null)
+//                    .setCropEngine(enableCrop ?
+//                            new ImageCropEngine(this, buildOptions(selectorStyle), width.intValue(), height.intValue()) : null)
                     .setCompressEngine(new ImageCompressEngine(compressSize.intValue()))
                     .setSandboxFileEngine(new MeSandboxFileEngine())
                     .isDisplayCamera(showCamera)
